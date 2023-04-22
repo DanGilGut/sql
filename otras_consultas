@@ -1,0 +1,39 @@
+create table recambios (
+   id  integer not null primary key autoincrement unique,
+   name varchar(50),
+   created_by int not null,
+   marca varchar(50) not null,
+   maquina_destino text,
+   foreign key(created_by) references registro(id)
+);
+
+
+insert into recambios (name, created_by, marca, maquina_destino)
+values
+('tuerca M5x10', 1, 'mxMec','F1'),
+('tuerca M5x20', 1, 'mxMec','F3'),
+('arandela M5x10', 1, 'mento','F3'),
+('arandela M5x20', 2, 'mento','F1'),
+('soporte', 2, 'plusTec','F2')
+;
+
+
+SELECT * FROM recambios;
+
+
+INSERT INTO recambios (name, created_by, marca, maquina_destino) VALUES ('soporte', 3, 'plusTec','F5');
+
+
+select r.id,temperatura from registro r;
+
+
+-- A continuación cruzamos las dos tablas
+select r.id,r.temperatura, r2.name from registro r left join recambios r2 on r.maquina = r2.maquina_destino;
+select r.id,r.temperatura, r2.name from registro r right join recambios r2 on r.maquina = r2.maquina_destino;
+select r.id,r.temperatura, r2.name from registro r inner join recambios r2 on r.maquina = r2.maquina_destino;
+select r.id,r.temperatura, r2.name from registro r cross join recambios r2;
+-- Group by...
+
+
+select count(id), name from recambios group by name;
+select count(id), name from recambios group by name having count(id) > 2 ;
