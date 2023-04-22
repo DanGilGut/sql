@@ -1,0 +1,29 @@
+SELECT * FROM registro;
+SELECT * FROM registro WHERE id = 489;
+SELECT * FROM registro WHERE maquina = 'F1';
+SELECT * FROM registro WHERE maquina = 'F1' AND temperatura < 25;
+SELECT * FROM registro WHERE maquina = 'F1' OR temperatura < 25;
+SELECT * FROM registro WHERE temperatura BETWEEN 21 AND 23;
+SELECT * FROM registro WHERE maquina LIKE '%F%'; -- busca la cadena ignora alante y atrás
+SELECT temperatura, intensidad FROM registro;
+SELECT temperatura AS temp FROM registro;
+
+
+
+SELECT * FROM registro ORDER BY maquina DESC ;
+SELECT * FROM registro ORDER BY temperatura ASC ;
+
+
+SELECT max(temperatura) AS MAYOR_TEMP FROM registro;
+SELECT min(temperatura) AS MENOR_TEMP FROM registro;
+
+
+
+
+INSERT INTO registro (maquina, vibraciones, temperatura, dif_tension, intensidad) VALUES ('F1',2.1,24.5,5.9,11.3);
+
+
+UPDATE registro SET temperatura = 21.84 WHERE temperatura = 21.85;
+
+
+DELETE FROM registro WHERE id = 478;
